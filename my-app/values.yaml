@@ -1,5 +1,5 @@
 # Sample values for testing the chart rendering
-name: my-sample-app
+name: my-sample-app1
 namespace: default
 replicaCount: 2
 image:
