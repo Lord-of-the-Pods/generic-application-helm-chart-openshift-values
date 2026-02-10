@@ -4,7 +4,7 @@ namespace: default
 replicaCount: 2
 image:
   repository: quay.io/abvishno/oc-pipelines-account-microservice
-  tag: stable
+  tag: latest
   pullPolicy: IfNotPresent
 ports:
   containerPort: 8080

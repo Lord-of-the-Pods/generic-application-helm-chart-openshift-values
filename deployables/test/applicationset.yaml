@@ -1,51 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  creationTimestamp: '2026-02-10T08:43:00Z'
-  generation: 1
-  managedFields:
-    - apiVersion: argoproj.io/v1alpha1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:spec':
-          .: {}
-          'f:generators': {}
-          'f:template':
-            .: {}
-            'f:metadata':
-              .: {}
-              'f:name': {}
-            'f:spec':
-              .: {}
-              'f:destination':
-                .: {}
-                'f:namespace': {}
-                'f:server': {}
-              'f:project': {}
-              'f:sources': {}
-              'f:syncPolicy':
-                .: {}
-                'f:automated':
-                  .: {}
-                  'f:prune': {}
-                  'f:selfHeal': {}
-      manager: Mozilla
-      operation: Update
-      time: '2026-02-10T08:43:00Z'
-    - apiVersion: argoproj.io/v1alpha1
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:status':
-          .: {}
-          'f:conditions': {}
-      manager: argocd-applicationset-controller
-      operation: Update
-      subresource: status
-      time: '2026-02-10T08:43:00Z'
   name: my-apps
   namespace: openshift-gitops
-  resourceVersion: '298944'
-  uid: c99bda5a-f6be-4692-9acf-28e694957936
 spec:
   generators:
     - list:
@@ -74,20 +31,3 @@ spec:
         automated:
           prune: true
           selfHeal: true
-status:
-  conditions:
-    - lastTransitionTime: '2026-02-10T08:43:00Z'
-      message: Successfully generated parameters for all Applications
-      reason: ApplicationSetUpToDate
-      status: 'False'
-      type: ErrorOccurred
-    - lastTransitionTime: '2026-02-10T08:43:00Z'
-      message: Successfully generated parameters for all Applications
-      reason: ParametersGenerated
-      status: 'True'
-      type: ParametersGenerated
-    - lastTransitionTime: '2026-02-10T08:43:00Z'
-      message: ApplicationSet up to date
-      reason: ApplicationSetUpToDate
-      status: 'True'
-      type: ResourcesUpToDate
