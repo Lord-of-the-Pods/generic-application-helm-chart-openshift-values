@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: my-apps
+  namespace: openshift-gitops
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/Lord-of-the-Pods/generic-application-helm-chart-openshift-values.git
+        revision: HEAD
+        directories:
+          - path: account-microservice
+          - path: login-microservice
+  template:
+    metadata:
+      name: '{{.path.basename}}'
+    spec:
+      destination:
+        namespace: test-gitops
+        server: 'https://kubernetes.default.svc'
+      project: default
+      sources:
+        - chart: openshift-application
+          helm:
+            valueFiles:
+              - {{repoURL}}/{{.path.basename}}/values.yaml
+          repoURL: 'https://lord-of-the-pods.github.io/generic-application-helm-chart-openshift'
+          targetRevision: 0.1.0
+        - ref: values
+          repoURL: 'https://github.com/Lord-of-the-Pods/generic-application-helm-chart-openshift-values.git'
+          targetRevision: HEAD
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
